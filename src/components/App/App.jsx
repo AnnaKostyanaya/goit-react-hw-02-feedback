@@ -18,9 +18,10 @@ export class App extends Component {
 
   handleIncrement = (vote) => {
     this.setState(prevState => {
-      let stateOptions = {}
-      stateOptions[vote] = prevState[vote] + 1
-      return stateOptions
+      return {[vote]: prevState[vote] + 1}
+      // let stateOptions = {}
+      // stateOptions[vote] = prevState[vote] + 1
+      // return stateOptions
     });
   };
 
@@ -29,8 +30,14 @@ export class App extends Component {
   }; 
 
   countPositiveFeedbackPercentage = () => {
-    if (this.state.good > 0 && this.state.neutral > 0 && this.state.bad) {return 0;}
-    return Number((this.state.good / (this.state.good + this.state.neutral + this.state.bad) * 100).toFixed(2))
+    const total = this.countTotalFeedback(); 
+    const positivePers = (this.state.good / total) * 100;
+    const positivePersFixed = (positivePers).toFixed(2);
+    if (!total) {
+      return 0;
+    }
+    return Number(positivePersFixed);
+    // return Number((this.state.good / (this.state.good + this.state.neutral + this.state.bad) * 100).toFixed(2))
   }; 
 
   render() {
