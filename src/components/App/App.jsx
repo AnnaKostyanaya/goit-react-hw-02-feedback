@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Statistics from '../Statistics';
 import FeedbackOptions from '../FeedbackOptions';
 import Notification from '../Notification';
@@ -7,10 +7,7 @@ import { Container } from './App.styled';
 
 
 export class App extends Component {
-  static defaultProps = {
-    // initialValue: 0,
-  };
-
+  
   state = {
     good: 0,
     neutral: 0, 
