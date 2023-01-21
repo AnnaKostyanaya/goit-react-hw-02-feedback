@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Statistics from '../Statistics';
 import FeedbackOptions from '../FeedbackOptions';
 import Notification from '../Notification';
@@ -42,7 +42,7 @@ export class App extends Component {
     return (
       <Container>
         <Section title="Please leave feedback">
-          <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={this.handleIncrement} />
+          <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.handleIncrement} />
         </Section>
         {(this.state.good > 0 || this.state.neutral > 0 || this.state.bad) > 0 ? (
             <Section title="Statistics">
